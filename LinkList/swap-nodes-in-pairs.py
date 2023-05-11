@@ -14,14 +14,15 @@ class Solution:
         while ((curr is not None) and (curr.next is not None)):
             next = curr.next
             next_next = next.next
-            if pre is None:
-                head = next
-                pre = next
-            else:
-                pre.next = next           
+
             next.next = curr
             curr.next = next_next
-            
+
+            if pre is None:
+                head = next
+            else:
+                pre.next =next
+
             pre = curr
             curr = next_next
         return head
