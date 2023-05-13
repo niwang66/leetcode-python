@@ -1,4 +1,7 @@
 '''
+https://leetcode.cn/problems/linked-list-cycle-ii/
+'''
+f'''
 https://leetcode.cn/problems/linked-list-cycle/
 '''
 
@@ -11,16 +14,16 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         s = set()
         curr = head
         while curr is not None:
             if curr in s:
-                return True
+                return curr
             else:
                 s.add(curr)
                 curr = curr.next
-        return False
+        return None
 
 def print_list(head: Optional[ListNode]):
     curr = head
@@ -46,4 +49,4 @@ if __name__ == '__main__':
         curr = next
 
     s = Solution()
-    print(s.hasCycle(head))
+    print(s.detectCycle(head))
