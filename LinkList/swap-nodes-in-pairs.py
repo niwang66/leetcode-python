@@ -9,8 +9,24 @@ class ListNode:
         self.next = next
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        return None
+        pre = None
+        curr = head
+        while ((curr is not None) and (curr.next is not None)):
+            next = curr.next
+            next_next = next.next
 
+            next.next = curr
+            curr.next = next_next
+
+            if pre is None:
+                head = next
+            else:
+                pre.next =next
+
+            pre = curr
+            curr = next_next
+        return head
+    
 
 def print_list(head: Optional[ListNode]):
     curr = head
@@ -37,5 +53,5 @@ if __name__ == '__main__':
 
     s = Solution()
     head = s.swapPairs(head)
-    print_list(head)
 
+    print_list(head)
