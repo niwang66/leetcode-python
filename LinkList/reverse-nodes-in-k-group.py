@@ -37,41 +37,7 @@ class Solution:
             pre_group_begin = group_begin
         pre_group_begin.next = curr
         return head
-
-    # def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-    #     if k<2 :
-    #         return head
-    #     first_group = True
-    #     group_begin = head
-    #     pre_group_begin = None
-    #     while (group_begin is not None) :
-    #         group_end = group_begin.next
-    #         i = 0
-    #         while (group_end is not None) and (i< k-2):
-    #             group_end = group_end.next
-    #             i += 1
-    #         if (group_end is not None):
-    #             if(first_group):
-    #                 head = group_end
-    #                 first_group = False
-    #             next_group_begin = group_end.next
-    #             pre,curr = None,group_begin
-    #             while(curr is not None) and (curr is not next_group_begin):
-    #                 next = curr.next
-    #                 curr.next = pre
-    #                 pre,curr=curr,next
-    #         else:
-    #             next_group_begin = None
-    #             pre_group_begin.next = group_begin
-    #         if (pre_group_begin is not None) and (group_end is not None):
-    #             pre_group_begin.next = group_end
-    #         pre_group_begin = group_begin
-    #         if(next_group_begin is not None):
-    #             group_begin.next = next_group_begin
-    #         group_begin = next_group_begin
-    #     return head
     
-
 def print_list(head: Optional[ListNode]):
     curr = head
     while curr is not None:
