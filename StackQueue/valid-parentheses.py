@@ -1,36 +1,25 @@
-"""
-https://leetcode.cn/problems/valid-parentheses/description/
-"""
-from typing import Optional
+from builtins import str
 
-
+# https://leetcode.cn/problems/valid-parentheses/
 class Solution:
     def isValid(self, s: str) -> bool:
+        parentheses_dic = {")":"(","}":"{","]":"["}
+        left_parentheses_list = ("(","{","[")
         l = list()
         for c in s:
-            if c == "(" or c == "[" or c == "{":
-                l.append(c)
-            elif c == ")" and len(l) > 0:
-                if l[-1] == "(":
-                    l.pop()
-                else:
-                    return False
-            elif c == "]" and len(l)> 0:
-                if l[-1] == "[":
-                    l.pop()
-                else:
-                    return False
-            elif c == "}" and len(l) > 0:
-                if l[-1] == "{":
-                    l.pop()
-                else:
-                    return False
+            if c in left_parentheses_list:
+               l.append(c)
             else:
-                return False
+                left_parentheses = parentheses_dic[c]
+                if len(l)>0 and l[-1] == left_parentheses:
+                    l.pop()
+                else:
+                    return False
         return len(l) == 0
 
 
 if __name__ == '__main__':
-    str1 = "()[]{}"
-    s = Solution()
-    print(s.isValid(str1))
+    s = "]"
+    solution = Solution()
+    res = solution.isValid(s)
+    print(res)
