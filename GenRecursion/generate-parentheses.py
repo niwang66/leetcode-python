@@ -1,17 +1,25 @@
-#https://leetcode.cn/problems/generate-parentheses/
+
+# https://leetcode.cn/problems/generate-parentheses/
+
 from typing import List
 
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        self.rec(0,2*n,"")
-        return None
-    def rec(self,level,n,s):
-        if level == n:
-            print(s)
+        self.res = []
+        self.recur(0,0,n,"")
+        return  self.res
+    def recur(self, left, right, n, s):
+        if left == n & right ==n:
+            self.res.append(s)
             return
-        self.rec(level + 1, n, s + "(")
-        self.rec(level + 1, n, s + ")")
+        if left < n:
+            self.recur(left+1, right, n, s+"(")
+        if right < left:
+            self.recur(left, right + 1, n, s + ")")
+
 
 if __name__ == '__main__':
-    s = Solution()
-    print(s.generateParenthesis(3))
+    solution = Solution()
+    res = solution.generateParenthesis(4)
+    print(res)
+
